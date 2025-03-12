@@ -18,3 +18,4 @@
 
 Post 1.0:
 - Generate PAP
+- Self-host explanation in reamde (using docker)
