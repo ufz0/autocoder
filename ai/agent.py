@@ -16,15 +16,15 @@ Coding Guidelines:
 7. Do not use comments in your code.
 8. If you collect input via Console.ReadLine(), make the prompts in German (Deutsch).
 9. All other parts of the code must be fully in English!
-10. The file you write must have an entry point! (Main() method)
+10. The file you write must have an entry point! (Main() method!
+11. ALL METHODS MUST BE FULLY FUNCTIONAL!!
 
 Assignment:
 """
 
-SUMMARIZER_SUMMARY = """
-You are an expert C# coder. Below is a piece of code. 
-Write a very simple one sentence summary of what the
-code generally does.
+SUMMARIZER_SUMMARY = """s
+Summarize this code in a few simple words. Really only the gist of it.
+The summary shall not be longer than 10 Words!!!
 
 Code:
 """
@@ -38,6 +38,7 @@ You are an expert C# developer, who is given a problem. Write down your thought 
 Include possible solution paths. Start your response with 'Alright, '
 
 At the bottom of your thought process, write down your final step by step instruction on how to code a solution to this.
+DO NOT WRITE ANY CODE YET!!!!!
 
 Task:
 """
@@ -48,8 +49,7 @@ def think(task: str):
     return "<thought>"+thought+"</thought>"
 
 def generate_code(summary: str) -> str:
-    thought = think(summary)
-    code = invoke.generate(CODER_SUMMARY + thought)
+    code = invoke.generate(CODER_SUMMARY + summary)
     #print(code)
     return code
 
@@ -62,5 +62,5 @@ def summarize_code(code: str) -> str:
 # Main AI Bot function
 def solve_code(task: str) -> str:
     thought_result = think(task)
-    code_result = generate_code(thought_result)
+    code_result = generate_code(thought_result + task)
     return (thought_result, code_result)
