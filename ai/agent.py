@@ -13,6 +13,9 @@ Coding Guidelines:
 4. Use camelCase for variables and PascalCase for methods.
 5. Your code must have the line: using System; at the top.
 6. Your variable names must be well chosen and understandable.
+7. Do not use comments in your code.
+8. If you collect input via Console.ReadLine(), make the prompts in German (Deutsch).
+9. All other parts of the code must be fully in English!
 
 Assignment:
 """
