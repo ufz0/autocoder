@@ -13,10 +13,10 @@ def sendPrompt():
 
     prompt = request.form.get('prompt') if request.method == "POST" else request.args.get('prompt')
     if prompt:
-        result = agent.solve_code(prompt)
+        thought, result = agent.solve_code(prompt)
         summary = agent.summarize_code(result)
 
-        return render_template('result.html', result=result, summary=summary)
+        return render_template('result.html', result=result, summary=summary, thought=thought)
     else:
         return redirect(url_for('mainWebsite'))
 

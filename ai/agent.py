@@ -16,6 +16,7 @@ Coding Guidelines:
 7. Do not use comments in your code.
 8. If you collect input via Console.ReadLine(), make the prompts in German (Deutsch).
 9. All other parts of the code must be fully in English!
+10. The file you write must have an entry point! (Main() method)
 
 Assignment:
 """
@@ -28,23 +29,28 @@ code generally does.
 Code:
 """
 
+#You are an expert C# coder. Below is an assignment. It is your task to create a step by step
+#plan to solve this problem, so your Junior Developer can implement it. Make sure it is
+#detailed enough so he knows exactly what to do.
+
 THINKER_SUMMARY = """
-You are an expert C# coder. Below is an assignment. It is your task to create a step by step
-plan to solve this problem, so your Junior Developer can implement it. Make sure it is
-detailed enough so he knows exactly what to do.
+You are an expert C# developer, who is given a problem. Write down your thought process as you tackle this problem.
+Include possible solution paths. Start your response with 'Alright, '
+
+At the bottom of your thought process, write down your final step by step instruction on how to code a solution to this.
 
 Task:
 """
 
 def think(task: str):
     thought = invoke.generate(THINKER_SUMMARY + task)
-    print(thought)
-    return thought
+    #print(thought)
+    return "<thought>"+thought+"</thought>"
 
 def generate_code(summary: str) -> str:
     thought = think(summary)
     code = invoke.generate(CODER_SUMMARY + thought)
-    print(code)
+    #print(code)
     return code
 
 def summarize_code(code: str) -> str:
@@ -52,7 +58,9 @@ def summarize_code(code: str) -> str:
     print(summary)
     return summary
 
+
+# Main AI Bot function
 def solve_code(task: str) -> str:
     thought_result = think(task)
     code_result = generate_code(thought_result)
-    return code_result
+    return (thought_result, code_result)
