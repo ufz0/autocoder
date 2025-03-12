@@ -1,13 +1,13 @@
-import json
 import requests
-
+import json
 
 def generate(input_text: str) -> str:
     url = "https://internet.com:8000/messages"
     request_body = json.dumps({"message": input_text})
     
     try:
-        response = requests.post(url, data=request_body, headers={"Content-Type": "application/json"})
+        # Set a timeout of 5 seconds for the request
+        response = requests.post(url, data=request_body, headers={"Content-Type": "application/json"}, timeout=5)
         
         if response.status_code == 429:
             print("Quota exceeded. Stopping requests.")
