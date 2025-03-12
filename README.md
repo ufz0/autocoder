@@ -15,3 +15,6 @@
     - [ ] Thinking
     - [ ] Coding
     - [ ] Summary
+
+Post 1.0:
+- Generate PAP
