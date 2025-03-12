@@ -42,7 +42,8 @@ def think(task: str):
     return thought
 
 def generate_code(summary: str) -> str:
-    code = invoke.generate(CODER_SUMMARY + summary)
+    thought = think(summary)
+    code = invoke.generate(CODER_SUMMARY + thought)
     print(code)
     return code
 
