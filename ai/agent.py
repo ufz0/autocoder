@@ -8,7 +8,7 @@ Your response will be the main.cs file, containing the solution.
 Coding Guidelines:
 
 1. Never use break in loops
-2. Only use return if it returns a VALUE
+2. Only use return if it is at the end of a method.
 3. Do not use Top Level Statements. Your Program should contain a namespace and a class.
 4. Use camelCase for variables and PascalCase for methods.
 5. Your code must have the line: using System; at the top.
