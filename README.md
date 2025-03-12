@@ -1,4 +1,4 @@
-# 1.0 Feature
+# 1.0 Feature List
 
 - [ ] Input
     - [ ] Webserver (with pdf File upload)
