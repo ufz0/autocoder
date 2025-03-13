@@ -1,20 +1,20 @@
 # 1.0 Feature List
-
+## Last update: 13.03.2025
 - [ ] Input
-    - [ ] Webserver
+    - [x] Webserver
     - [ ] PDF file upload
-    - [ ] Website Frontend
-    - [ ] Username and real name input
+    - [x] Website Frontend
+    - [x] Username and real name input
     - [ ] PDF Processing
     - [ ] Extract text from PDF
-    - [ ] Summarize text
-    - [ ] Parse text to AI Agent
+    - [x] Summarize text
+    - [x] Parse text to AI Agent
 - [ ] Discord Bot
     - [ ] Notify user upon completion
 - [ ] AI Agent
-    - [ ] Thinking
-    - [ ] Coding
-    - [ ] Summary
+    - [x] Thinking
+    - [x] Coding
+    - [x] Summary
 
 Post 1.0:
 - Generate PAP

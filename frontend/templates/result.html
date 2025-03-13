@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AutoCoder - Result</title>
+    
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      pre { background: #f5f5f5; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    
+    <p>{{ thought }}</p>
+    <h1>Generated Code</h1>
+    
+    <pre><code class="language-csharp">{{ result }}</code></pre>
+    <h2>Explanation</h2>
+    <p>{{ summary }}</p>
+    <p><a href="{{ url_for('mainWebsite') }}">Try another prompt</a></p>
+</body>
+</html>
