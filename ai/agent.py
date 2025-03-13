@@ -17,7 +17,8 @@ Coding Guidelines:
 8. If you collect input via Console.ReadLine(), make the prompts in German (Deutsch).
 9. All other parts of the code must be fully in English!
 10. The file you write must have an entry point! (Main() method!
-11. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
+11. Never use for each!
+12. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
 
 Write the fully functional code for all functions
 Assignment:
