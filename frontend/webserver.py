@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-import formatter
 import ai.invoke as invoke
 import ai.agent as agent
 import formatter.blockheadercomment as bh
