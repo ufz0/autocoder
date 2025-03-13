@@ -13,7 +13,7 @@ cwd = os.getcwd()
 UPLOAD_FOLDER = cwd+'/uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-filename = "ROT13_mit_Methoden.pdf"
+filename = ""
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
