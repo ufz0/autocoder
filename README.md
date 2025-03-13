@@ -10,8 +10,7 @@
     - [x] Summarize text
     - [x] Parse text to AI Agent
     - [x] Allow manual input too (with /manual route)
-- [ ] Discord Bot
-    - [ ] Notify user upon completion
+
 - [ ] AI Agent
     - [x] Thinking
     - [x] Coding
@@ -20,3 +19,4 @@
 Post 1.0:
 - Generate PAP
 - Self-host explanation in reamde (using docker)
+- UI Enhancement
