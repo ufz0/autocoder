@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-import formatter
 import ai.invoke as invoke
 import ai.agent as agent
 import formatter.blockheadercomment as bh
@@ -11,9 +10,9 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 cwd = os.getcwd()
 UPLOAD_FOLDER = cwd+'/uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg'}
+ALLOWED_EXTENSIONS = {'pdf'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-filename = "ROT13_mit_Methoden.pdf"
+filename = ""
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
