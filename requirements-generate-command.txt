@@ -1,0 +1,1 @@
+# pipreqs . --force to update | pip install pipreqs 
