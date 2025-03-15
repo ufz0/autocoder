@@ -4,7 +4,15 @@ WORKDIR /app
 
 COPY requirements.txt . 
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install pipreqs 
+
+RUN pipreqs . --force
+
+RUN pip install flask
+
+RUN pip install tika
+
+RUN pip install -r requirements.txt
 
 COPY . . 
 
