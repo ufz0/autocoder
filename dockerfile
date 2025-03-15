@@ -19,6 +19,6 @@ RUN python -c "import tika; tika.initVM()"
 COPY . . 
 RUN wget -q -O tika-server.jar https://repo1.maven.org/maven2/org/apache/tika/tika-server-standard/2.8.0/tika-server-standard-2.8.0.jar
 
-EXPOSE 8088
+EXPOSE ${PORT:-8088}
 
-CMD ["sh", "-c", "java -jar tika-server.jar --host 0.0.0.0 & python3 main.py"]
+CMD ["sh", "-c", "/usr/bin/java -jar tika-server.jar --host 0.0.0.0 --port ${PORT:-8088} & python3 main.py"]
