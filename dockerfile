@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y default-jdk && rm -rf /var/lib/apt/list
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"  
 ENV PATH="$JAVA_HOME/bin:$PATH"
 ENV TIKA_SERVER_JAR="/tmp/tika-server.jar"
+ENV TIKA_SERVER_ENDPOINT="http://0.0.0.0:${PORT:-8088}"
 
 RUN java -version || (echo "Java installation failed!" && exit 1)
 
