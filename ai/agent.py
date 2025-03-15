@@ -19,7 +19,7 @@ Coding Guidelines:
 10. The file you write must have an entry point! (Main() method!
 11. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
 12. Never use foreach. Use a simple "for" loop instead
-13. Don't use methods like .isDigit or .ToLower etc.
+13. Don't use methods like .isDigit or .ToLower, .ToUpper etc.
 Write the fully functional code for all functions without "foreach" loops
 Assignment:
 """
