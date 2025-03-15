@@ -17,7 +17,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . . 
 RUN wget -q -O /tmp/tika-server.jar https://repo1.maven.org/maven2/org/apache/tika/tika-server-standard/2.8.0/tika-server-standard-2.8.0.jar
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 EXPOSE ${PORT:-8088}
 
-CMD ["sh", "-c", "/usr/bin/java -jar /tmp/tika-server.jar --host 0.0.0.0 --port ${PORT:-8088} & python3 main.py"]
+CMD ["sh", "/app/entrypoint.sh"]
