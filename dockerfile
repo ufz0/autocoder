@@ -1,7 +1,7 @@
 FROM python:3.12
 
 # Install full Java (default-jdk) and dependencies
-RUN apt-get update && apt-get install -y default-jdk && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y openjdk-11-jdk-headless && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"  
 ENV PATH="$JAVA_HOME/bin:$PATH"
