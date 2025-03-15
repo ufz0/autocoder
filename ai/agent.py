@@ -20,6 +20,7 @@ Coding Guidelines:
 11. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
 12. Never use foreach. Use a simple "for" loop instead
 13. Don't use methods like .isDigit or .ToLower, .ToUpper etc.
+14. Don't use markdown things such as ```c# ```
 Write the fully functional code for all functions without "foreach" loops
 Assignment:
 """

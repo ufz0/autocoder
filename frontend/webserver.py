@@ -1,18 +1,19 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file, flash
+from flask import after_this_request
 import ai.invoke as invoke
 import ai.agent as agent
 import formatter.blockheadercomment as bh
 from pdf.textscraper import getPdfContent
 import os
-from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 cwd = os.getcwd()
 UPLOAD_FOLDER = cwd+'/uploads'
+OUTPUT_FOLDER = cwd+'/output'
 ALLOWED_EXTENSIONS = {'pdf'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-filename = ""
+outputFileName = ""
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
@@ -40,6 +41,7 @@ def sendPrompt():
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    clientIp = request.remote_addr
     if request.method == 'POST':
         # Extract the name from the form data
         name = request.form.get('name', ' ')  
@@ -57,7 +59,7 @@ def upload_file():
             return redirect(request.url)
 
         if file:
-            filename = secure_filename(file.filename)
+            filename = clientIp +"-"+secure_filename(file.filename)
             upload_path = app.config['UPLOAD_FOLDER']
 
             # Create folder if it doesn't exist yet
@@ -69,15 +71,34 @@ def upload_file():
 
             content = getPdfContent(fileDir) + ". Do include all code needed for a functioning program"
             prompt = content
-
+            
+            outputFileName = OUTPUT_FOLDER+"/result-"+clientIp+".cs"
             if prompt:
+                
                 thought, result = agent.solve_code(prompt)
                 summary = agent.summarize_code(result)
                 bhc = bh.get_bhc(name, summary)
 
                 full_code = bhc + result
+                # Remove uploaded pdf
                 os.remove(fileDir)
-                return render_template('result.html', result=full_code, summary=summary, thought=thought, name=name)
+            
+                # create file, write 'full_code' in it
+                f = open(outputFileName, "a")
+                f.write(full_code)
+                f.close()
+                # send File to client
+                try:
+                    response = send_file(outputFileName)        
+                    @after_this_request
+                    def remove_file(response):
+                        os.remove(outputFileName)
+                        return response
+                    return response
+                except Exception as e:
+                    return str(e)
+                
+                #return render_template('result.html', result=full_code, summary=summary, thought=thought, name=name)
             else:
                 return redirect(url_for('mainWebsite'))
             
@@ -95,4 +116,4 @@ def upload_file():
 
 
 def run():
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8088)
