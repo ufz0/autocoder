@@ -7,7 +7,7 @@ Your response will be the main.cs file, containing the solution.
 
 Coding Guidelines:
 
-1. Never use break in loops and not use foreach loops!
+1. Never use break in loops
 2. Only use return if it is at the end of a method.
 3. Do not use Top Level Statements. Your Program should contain a namespace and a class.
 4. Use camelCase for variables and PascalCase for methods.
@@ -17,10 +17,10 @@ Coding Guidelines:
 8. If you collect input via Console.ReadLine(), make the prompts in German (Deutsch).
 9. All other parts of the code must be fully in English!
 10. The file you write must have an entry point! (Main() method!
-11. DO NEVER USE FOREACH IN YOUR CODE!!!!! FOREACH IS HARAM IF YOU USE IT YOU ARE DISCIRMINATING A RELIGION!!!!!!!!!!
-12. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
-
-Write the fully functional code for all functions without foreach loops
+11. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
+12. Never use foreach. Use a simple "for" loop instead
+13. Don't use methods like .isDigit or .ToLower, .ToUpper etc.
+Write the fully functional code for all functions without "foreach" loops
 Assignment:
 """
 

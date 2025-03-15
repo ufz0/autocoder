@@ -1,6 +1,6 @@
 # 1.0 Feature List
-## Last update: 13.03.2025
-- [ ] Input
+## Last update: 15.03.2025
+- [x] Input
     - [x] Webserver
     - [x] PDF file upload
     - [x] Website Frontend
@@ -11,12 +11,16 @@
     - [x] Parse text to AI Agent
     - [x] Allow manual input too (with /manual route)
 
-- [ ] AI Agent
+- [x] AI Agent
     - [x] Thinking
     - [x] Coding
     - [x] Summary
 
-Post 1.0:
-- Generate PAP
-- Self-host explanation in reamde (using docker)
-- UI Enhancement
+- [ ] Output
+    - [ ] Downloadable .cs file
+
+
+# Post 1.0 Features
+- Generate PAP (downloadable .drawio file | output category)
+- Self-hostable (using docker)
+- UI Enhancements
