@@ -4,7 +4,7 @@ FROM python:3.12
 RUN apt-get update && apt-get install -y openjdk-11-jdk-headless && rm -rf /var/lib/apt/lists/*
 
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"  
-ENV PATH="$JAVA_HOME/bin:$PATH"
+ENV PATH="$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 ENV TIKA_SERVER_JAR="/tmp/tika-server.jar"
 ENV TIKA_SERVER_ENDPOINT="http://0.0.0.0:${PORT:-8088}"
 
