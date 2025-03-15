@@ -16,8 +16,8 @@
     - [x] Coding
     - [x] Summary
 
-- [ ] Output
-    - [ ] Downloadable .cs file
+- [x] Output
+    - [x] Downloadable .cs file
 
 
 # Post 1.0 Features
