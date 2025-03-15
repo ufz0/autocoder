@@ -21,4 +21,4 @@ RUN wget -q -O tika-server.jar https://repo1.maven.org/maven2/org/apache/tika/ti
 
 EXPOSE 8088
 
-CMD ["sh", "-c", "java -jar tika-server.jar & python3 main.py"]
+CMD ["sh", "-c", "java -jar tika-server.jar --host 0.0.0.0 & python3 main.py"]
