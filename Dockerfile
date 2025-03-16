@@ -21,10 +21,6 @@ RUN pip install -r requirements.txt
 
 COPY . . 
 
-RUN mkdir output
-RUN mkdir pdf
-RUN mkdir uploads
-
 EXPOSE 8088
 
 CMD [ "python3", "main.py" ]
