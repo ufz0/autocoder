@@ -22,6 +22,10 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 def mainWebsite():
     return render_template('index.html')
 
+@app.route("/styles.css")
+def sendCSS():
+    return send_file('templates/styles.css')
+
 @app.route("/prompt", methods=["GET", "POST"])
 def sendPrompt():
     prompt = request.form.get('prompt') if request.method == "POST" else request.args.get('prompt')
