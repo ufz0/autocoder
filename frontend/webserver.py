@@ -94,7 +94,7 @@ def upload_file():
                 f.close()
 
                 data = {
-                    "content": "# New Request\n*Name:* "+name+"\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
+                    "content": "# New Request [ENV: Dev]\n*Name:* "+name+"\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
                     "username": "Statistics"
                 }
 
