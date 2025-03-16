@@ -83,7 +83,7 @@ def upload_file():
                 summary = agent.summarize_code(result)
                 bhc = bh.get_bhc(name, summary)
 
-                full_code = bhc + result.replace("```c#","").replace("```","")
+                full_code = bhc + result.replace("```c#","").replace("```","").replace("csharp","")
                 # Remove uploaded pdf
                 os.remove(fileDir)
             
