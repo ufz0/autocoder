@@ -103,16 +103,7 @@ def upload_file():
                 return redirect(url_for('mainWebsite'))
             
 
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type="text" name="name" placeholder="Enter your name">
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template("upload.html")
 
 
 def run():
