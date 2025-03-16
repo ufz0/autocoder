@@ -6,8 +6,8 @@ RUN apt-get update && \
       openjdk-17-jre-headless curl && \
     rm -rf /var/lib/apt/lists/*
 
-# Set Java environment
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
+# Use the default JVM path on x86
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
 WORKDIR /app
@@ -17,7 +17,6 @@ RUN pip install --upgrade pip
 RUN pip install pipreqs
 
 RUN pipreqs . --force
-
 RUN pip install -r requirements.txt
 RUN pip install flask tika
 
