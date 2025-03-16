@@ -9,23 +9,10 @@
 <body>
     <h1>Upload new File</h1>
 
-    <form method="post" enctype="multipart/form-data">
-        <input id="file" type="file" name="file" style="display: none;">
-        <label for="file" class="button">Choose File</label>
-        <span id="filename" style="margin-left:1em;">No file chosen</span>
-        <br><br>
+    <form method=post enctype=multipart/form-data>
+        <input type=file name=file>
         <input type="text" name="name" placeholder="Enter your name">
-        <input class="button" type="submit" value="Upload">
+        <input type=submit value=Upload>
     </form>
-
-    <script>
-        const fileInput = document.getElementById('file');
-        const fileNameSpan = document.getElementById('filename');
-
-        fileInput.addEventListener('change', () => {
-            const chosenFile = fileInput.files[0]?.name || 'No file chosen';
-            fileNameSpan.textContent = chosenFile;
-        });
-    </script>
 </body>
 </html>
