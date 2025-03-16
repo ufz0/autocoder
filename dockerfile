@@ -6,8 +6,8 @@ RUN apt-get update && \
       openjdk-17-jre-headless curl && \
     rm -rf /var/lib/apt/lists/*
 
-# Use the default JVM path on x86
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+# Update JAVA_HOME to the typical path on Debian/Ubuntu systems
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
 WORKDIR /app
