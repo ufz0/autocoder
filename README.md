@@ -2,8 +2,8 @@
 ## Last update: 16.03.2025
 
 <details>
-  <summary><h2 id="10">1.0 - Released</h2></summary>
-
+  <summary><h2 id="10">1.0 - Released | 16.03.2025</h2></summary>
+  
 ### Input
 - [x] Webserver  
 - [x] PDF file upload  
@@ -26,7 +26,7 @@
 </details>
 
 <details>
-  <summary><h2 id="11">1.1 - In Development</h2></summary>
+  <summary><h2 id="11">1.1 - In Development | Planned for end of March</h2></summary>
 
 ### AI Agent
 - [ ] Generate .drawio files based on code  
