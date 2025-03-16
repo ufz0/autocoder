@@ -213,33 +213,37 @@ def generate_drawio_xml(flow_nodes, edges):
         edge_id += 1
     return ET.tostring(mxGraphModel, encoding="unicode")
 
-if __name__ == "__main__":
+def generateFromCode(inputCode: str, name: str) -> str:
+    print("Input Code: "+inputCode)
     sample_csharp = """
-using System;
-class Program {{
-    static void Main() {{
-        int x = 5;
-        Console.WriteLine("Start");
-        if (x > 3) {{
-            Console.WriteLine("x is greater than 3");
-        }} else {{
-            Console.WriteLine("x is not greater than 3");
+    using System;
+    class Program {{
+        static void Main() {{
+            int x = 5;
+            Console.WriteLine("Start");
+            if (x > 3) {{
+                Console.WriteLine("x is greater than 3");
+            }} else {{
+                Console.WriteLine("x is not greater than 3");
+            }}
+            for (int i = 0; i < 3; i++) {{
+                Console.WriteLine(i);
+            }}
+            while (x > 0) {{
+                Console.WriteLine(x);
+                x--;
+            }}
+            Console.ReadLine();
         }}
-        for (int i = 0; i < 3; i++) {{
-            Console.WriteLine(i);
-        }}
-        while (x > 0) {{
-            Console.WriteLine(x);
-            x--;
-        }}
-        Console.ReadLine();
     }}
-}}
-"""
-    flowchart_json = parse_csharp_code(sample_csharp)
+    """
+    flowchart_json = parse_csharp_code(inputCode+"inputcode end")
     if flowchart_json:
         nodes, edges = layout_nodes(flowchart_json, level=0)
         xml_output = generate_drawio_xml(nodes, edges)
-        with open("output.drawio", "w") as f:
+        filename = os.getcwd()+"/pap-"+name+".drawio"
+        
+        with open(filename, "w") as f:
             f.write(xml_output)
-        print("Draw.io XML erzeugt: output.drawio")
+        print(f"Draw.io XML created: {filename}")
+    return filename

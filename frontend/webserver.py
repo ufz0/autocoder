@@ -7,6 +7,9 @@ from pdf.textscraper import getPdfContent
 import os
 from werkzeug.utils import secure_filename
 import requests
+import pap.generate
+import zipfile
+import io
 
 app = Flask(__name__)
 cwd = os.getcwd()
@@ -48,26 +51,22 @@ def sendPrompt():
 def upload_file():
     clientIp = request.remote_addr
     if request.method == 'POST':
-        # Extract the name from the form data
         name = request.form.get('name', ' ')  
 
-        
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
 
         file = request.files['file']
 
-        
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
 
         if file:
-            filename = clientIp +"-"+secure_filename(file.filename)
+            filename = clientIp + "-" + secure_filename(file.filename)
             upload_path = app.config['UPLOAD_FOLDER']
 
-            # Create folder if it doesn't exist yet
             if not os.path.exists(upload_path):
                 os.makedirs(upload_path)
 
@@ -77,52 +76,44 @@ def upload_file():
             content = getPdfContent(fileDir) + ". Do include all code needed for a functioning program"
             prompt = content
             
-            outputFileName = OUTPUT_FOLDER+"/result-"+name.replace(" ", "-").replace(".","")+".cs"
+            outputFileName = os.path.join(OUTPUT_FOLDER, f"result-{name.replace(' ', '-').replace('.', '')}.cs")
             if prompt:
-                
                 thought, result = agent.solve_code(prompt)
                 summary = agent.summarize_code(result)
                 bhc = bh.get_bhc(name, summary)
 
                 full_code = bhc + result.replace("```c#","").replace("```","").replace("csharp","")
-                # Remove uploaded pdf
-                os.remove(fileDir)
-            
-                # create file, write 'full_code' in it
-                f = open(outputFileName, "a")
-                f.write(full_code)
-                f.close()
-                data = {
-                    "content": "# New Request on dev server\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
-                    "username": "AC Statistics"
-                }
-                files = {
-                    "thought.txt":thought
-                }
-
-                webhook_url = "https://discord.com/api/webhooks/1350810234322419734/ddFVv4-GDFdI5spKahKvjaJ0S74nSbloHKvUwobIUq1Oge8htmBaCWBnVYVizE8H0umx"
-
-                response = requests.post(webhook_url, data=data, files=files)
-                if response.status_code != 204:
-                    print("Failed to send message:",response.status_code)
-                # send File to client
-                try:
-                    response = send_file(outputFileName)        
-                    @after_this_request
-                    def remove_file(response):
-                        os.remove(outputFileName)
-                        return response
-                    return response
-                except Exception as e:
-                    return str(e)
                 
-                #return render_template('result.html', result=full_code, summary=summary, thought=thought, name=name)
+
+                os.remove(fileDir)
+
+
+                with open(outputFileName, "w") as f:
+                    f.write(full_code)
+
+
+                drawiofilePath = pap.generate.generateFromCode(full_code, name)
+
+
+                zip_buffer = io.BytesIO()
+                with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                    zipf.write(outputFileName, arcname=os.path.basename(outputFileName))
+                    zipf.write(drawiofilePath, arcname=os.path.basename(drawiofilePath))
+
+                zip_buffer.seek(0)
+
+                @after_this_request
+                def remove_files(response):
+                    os.remove(outputFileName)
+                    os.remove(drawiofilePath)
+                    return response
+
+                return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='results.zip')
+
             else:
                 return redirect(url_for('mainWebsite'))
-            
-
+    
     return render_template("upload.html")
-
 
 def run():
     app.run(debug=True, host='0.0.0.0', port=8088)

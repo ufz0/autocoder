@@ -51,9 +51,9 @@ def think(task: str):
     #print(thought)
     return "<thought>"+thought+"</thought>"
 
-def generate_code(thought: str, task: str) -> str:
-    #code = invoke.generate(CODER_SUMMARY+summary)
-    code = invoke.generate(task + " Here is a step to step solution: " + thought)
+def generate_code(thought: str) -> str:
+    code = invoke.generate(CODER_SUMMARY+thought)
+    #code = invoke.generate(task + " Here is a step to step solution: " + thought)
     
     #print(code)
     return code
@@ -67,5 +67,5 @@ def summarize_code(code: str) -> str:
 
 def solve_code(task: str) -> str:
     thought_result = think(task)
-    code_result = generate_code(thought_result, task)
+    code_result = generate_code(thought_result)
     return (thought_result, code_result)
