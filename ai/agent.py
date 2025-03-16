@@ -58,7 +58,7 @@ def generate_code(summary: str) -> str:
 
 def summarize_code(code: str) -> str:
     summary = invoke.generate(SUMMARIZER_SUMMARY + code)
-    print(summary)
+    #print(summary)
     return summary
 
 
