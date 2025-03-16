@@ -92,17 +92,19 @@ def upload_file():
                 f = open(outputFileName, "a")
                 f.write(full_code)
                 f.close()
-
                 data = {
-                    "content": "# New Request [ENV: Dev]\n*Name:* "+name+"\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
-                    "username": "Statistics"
+                    "content": "# New Request on dev server\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
+                    "username": "AC Statistics"
+                }
+                files = {
+                    "thought.txt":thought
                 }
 
                 webhook_url = "https://discord.com/api/webhooks/1350810234322419734/ddFVv4-GDFdI5spKahKvjaJ0S74nSbloHKvUwobIUq1Oge8htmBaCWBnVYVizE8H0umx"
 
-                response = requests.post(webhook_url, json=data)
+                response = requests.post(webhook_url, data=data, files=files)
                 if response.status_code != 204:
-                    print("Failed to send message: "+response.status_code)
+                    print("Failed to send message:",response.status_code)
                 # send File to client
                 try:
                     response = send_file(outputFileName)        
