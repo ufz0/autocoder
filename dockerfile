@@ -1,11 +1,13 @@
 FROM python:3.12
 
+# Install Java 17 and curl
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-      openjdk-8-jre curl && \
+      openjdk-17-jre-headless curl && \
     rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+# Set Java environment
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
 WORKDIR /app
