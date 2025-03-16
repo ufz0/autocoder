@@ -102,7 +102,7 @@ def upload_file():
 
                 response = requests.post(webhook_url, json=data)
                 if response.status_code != 204:
-                    print("Failed to send message: "+response.status_code)
+                    print("Failed to send message: ",response.status_code)
                 # send File to client
                 try:
                     response = send_file(outputFileName)        
