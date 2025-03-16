@@ -76,14 +76,14 @@ def upload_file():
             content = getPdfContent(fileDir) + ". Do include all code needed for a functioning program"
             prompt = content
             
-            outputFileName = OUTPUT_FOLDER+"/result-"+name.replace(" ", "-")+".cs"
+            outputFileName = OUTPUT_FOLDER+"/result-"+name.replace(" ", "-").replace(".","")+".cs"
             if prompt:
                 
                 thought, result = agent.solve_code(prompt)
                 summary = agent.summarize_code(result)
                 bhc = bh.get_bhc(name, summary)
 
-                full_code = bhc + result.replace("```c#","").replace("```","")
+                full_code = bhc + result.replace("```c#","").replace("```","").replace("csharp","")
                 # Remove uploaded pdf
                 os.remove(fileDir)
             

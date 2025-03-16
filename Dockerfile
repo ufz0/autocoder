@@ -21,6 +21,8 @@ RUN pip install -r requirements.txt
 
 COPY . . 
 
+RUN mkdir scripts pdfs output
+
 EXPOSE 8088
 
 CMD [ "python3", "main.py" ]
