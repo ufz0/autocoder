@@ -1,5 +1,17 @@
-# 1.0 Feature List
-## Last update: 15.03.2025
+# Roadmap
+## Last update: 16.03.2025
+
+## Overview
+- [1.0](#10)
+  - [Input](#input)
+  - [AI Agent](#ai-agent)
+  - [Output](#output)
+- [1.1](#11)
+  - [AI Agent](#ai-agent-1)
+  - [Output](#output-1)
+  - [Documentation](#documentation)
+
+## 1.0
 - [x] Input
     - [x] Webserver
     - [x] PDF file upload
@@ -18,9 +30,11 @@
 
 - [x] Output
     - [x] Downloadable .cs file
-
-
-# Post 1.0 Features
-- Generate PAP (downloadable .drawio file | output category)
-- Self-hostable (using docker)
-- UI Enhancements
+## 1.1
+- [ ] AI Agent
+    - [ ] Generate .drawio files based on code
+- [ ] Output
+    - [ ] Downloadable .drawio file
+     
+- [ ] Documentation
+    - [ ] Guide on how to self host
