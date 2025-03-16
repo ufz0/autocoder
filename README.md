@@ -2,16 +2,10 @@
 ## Last update: 16.03.2025
 
 ## Overview
-- [1.0](#10)
-  - [Input](#input)
-  - [AI Agent](#ai-agent)
-  - [Output](#output)
-- [1.1](#11)
-  - [AI Agent](#ai-agent-1)
-  - [Output](#output-1)
-  - [Documentation](#documentation)
+- [1.0](#10) - Released 16.03.2025
+- [1.1](#11) - In Development
 
-## 1.0
+## 1.0 - Released
 - [x] Input
     - [x] Webserver
     - [x] PDF file upload
@@ -30,7 +24,8 @@
 
 - [x] Output
     - [x] Downloadable .cs file
-## 1.1
+     
+## 1.1 - In Development
 - [ ] AI Agent
     - [ ] Generate .drawio files based on code
 - [ ] Output
