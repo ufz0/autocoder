@@ -22,6 +22,10 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 def mainWebsite():
     return render_template('index.html')
 
+@app.route("/styles.css")
+def sendCSS():
+    return send_file('templates/styles.css')
+
 @app.route("/prompt", methods=["GET", "POST"])
 def sendPrompt():
     prompt = request.form.get('prompt') if request.method == "POST" else request.args.get('prompt')
@@ -72,14 +76,14 @@ def upload_file():
             content = getPdfContent(fileDir) + ". Do include all code needed for a functioning program"
             prompt = content
             
-            outputFileName = OUTPUT_FOLDER+"/result-"+clientIp+".cs"
+            outputFileName = OUTPUT_FOLDER+"/result-"+name.replace(" ", "-")+".cs"
             if prompt:
                 
                 thought, result = agent.solve_code(prompt)
                 summary = agent.summarize_code(result)
                 bhc = bh.get_bhc(name, summary)
 
-                full_code = bhc + result
+                full_code = bhc + result.replace("```c#","").replace("```","")
                 # Remove uploaded pdf
                 os.remove(fileDir)
             
@@ -103,16 +107,7 @@ def upload_file():
                 return redirect(url_for('mainWebsite'))
             
 
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type="text" name="name" placeholder="Enter your name">
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template("upload.html")
 
 
 def run():

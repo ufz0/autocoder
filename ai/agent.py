@@ -20,8 +20,8 @@ Coding Guidelines:
 11. ALL METHODS MUST BE FULLY FUNCTIONAL AND HAVE ALL CODE NEEDED TO RUN AND FUNCTION!!
 12. Never use foreach. Use a simple "for" loop instead
 13. Don't use methods like .isDigit or .ToLower, .ToUpper etc.
-14. Don't use markdown things such as ```c# ```
-Write the fully functional code for all functions without "foreach" loops
+14. Don't use markdown code surroundings like: ```c# ``` or ```csharp ```. DON'T DO SUCH THINGS!
+Write the fully functional code for all functions without "foreach" loops and without markdown code 
 Assignment:
 """
 
@@ -58,7 +58,7 @@ def generate_code(summary: str) -> str:
 
 def summarize_code(code: str) -> str:
     summary = invoke.generate(SUMMARIZER_SUMMARY + code)
-    print(summary)
+    #print(summary)
     return summary
 
 
