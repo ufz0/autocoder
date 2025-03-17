@@ -45,10 +45,12 @@
 ### PAP 
 - [ ] Enhanced and refined pap design
 
-
 ### AI 
 - [ ] Request changes to existing code
 
+### Frontend
+- [ ] Display version number
+- [ ] Add website icon
 
 </details>
 
