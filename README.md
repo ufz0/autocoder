@@ -1,5 +1,5 @@
 # Roadmap
-## Last update: 16.03.2025
+## Last update: 17.03.2025
 
 <details>
   <summary><h2 id="10">1.0 - Released | 16.03.2025</h2></summary>
@@ -26,15 +26,72 @@
 </details>
 
 <details>
-  <summary><h2 id="11">1.1 - In Development | Planned for end of March</h2></summary>
+  <summary><h2 id="11">1.1 - Released | 17.03.2025</h2></summary>
 
 ### AI Agent
-- [ ] Generate .drawio files based on code  
+- [x] Generate .drawio files based on code  
 
 ### Output
-- [ ] Downloadable .drawio file  
+- [x] Downloadable .drawio file  
 
 ### Documentation
-- [ ] Guide on how to self host  
+- [x] Guide on how to self host  
 
 </details>
+
+
+
+# Self-Host & Contribution
+
+## Get started
+
+To self-host `autocoder`, follow these steps:
+
+### Prerequisites
+- Docker installed ([Installation guide](https://docs.docker.com/get-docker/))
+- Git installed ([Installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
+
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/ufz0/autocoder.git
+   cd autocoder
+2. Build the docker image:
+    ```sh
+    docker build -t autocoder .
+3. Run the container:
+   ```sh
+    docker run -d -p 8088:8088 --name autocoder autocoder
+4. Open the website in your browser:
+    https://localhost:8088
+
+
+## Contributing
+
+Contributions are welcome! Follow these steps to contribute:
+
+### Guidelines
+- Follow the existing code style.
+- Ensure your changes do not break existing functionality.
+- Write clear and concise commit messages.
+- Update documentation if needed.
+
+### Steps to Contribute
+1. **Fork the repository** on GitHub.
+2. **Clone your fork**:
+   ```sh
+   git clone https://github.com/your-username/autocoder.git
+   cd autocoder
+3. Create a branch for your change:
+    ```sh
+    git checkout -b feature-name
+4. Make your changes and commit them:
+    ```sh
+    git add .
+    git commit -m "Add feature-name"
+5. Push your changes to your fork
+    ```sh
+    git push origin feature-name
+6. Make a pull request on this repository
+
+
