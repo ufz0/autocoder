@@ -107,7 +107,7 @@ def upload_file():
                     os.remove(outputFileName)
                     os.remove(drawiofilePath)
                     return response
-                zipFilename = "results"+name+".zip"
+                zipFilename = "results-"+name+".zip"
                 return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name=zipFilename)
 
             else:
