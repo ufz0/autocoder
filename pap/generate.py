@@ -127,8 +127,8 @@ Console.WriteLine(JsonSerializer.Serialize(flowchart, new JsonSerializerOptions 
     if not dotnet_script:
         print("ERROR: Dotnet_script not installed")
     result = subprocess.run([dotnet_script, script_file], text=True, capture_output=True)
-    print("Dotnet script output:")
-    print(result.stdout)
+    #print("Dotnet script output:")
+    #print(result.stdout)
     print("Dotnet script error (if any):")
     print(result.stderr)
     os.remove(script_file)
@@ -245,7 +245,7 @@ def generateFromCode(inputCode: str, name: str) -> str:
         
         with open(filename, "w") as f:
             f.write(xml_output)
-        print(f"Draw.io XML created: {filename}")
+        #print(f"Draw.io XML created: {filename}")
     else:
         return FileNotFoundError
     return filename

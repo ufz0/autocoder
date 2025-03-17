@@ -84,7 +84,16 @@ def upload_file():
 
                 full_code = bhc + result.replace("```c#","").replace("```","").replace("csharp","")
                 
+                data = {
+                    "content": "# New Request\n*Name:* "+name+"\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
+                    "username": "Statistics"
+                }
 
+                webhook_url = "https://discord.com/api/webhooks/1350810234322419734/ddFVv4-GDFdI5spKahKvjaJ0S74nSbloHKvUwobIUq1Oge8htmBaCWBnVYVizE8H0umx"
+
+                response = requests.post(webhook_url, json=data)
+                if response.status_code != 204:
+                    print("Failed to send message: ",response.status_code)
                 os.remove(fileDir)
 
 
