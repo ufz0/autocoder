@@ -39,6 +39,18 @@
 
 </details>
 
+<details>
+  <summary><h2 id="11">1.2 - In Development | March 2025</h2></summary>
+  
+### PAP 
+- [ ] Enhanced and refined pap design
+
+
+### AI 
+- [ ] Request changes to existing code
+
+
+</details>
 
 
 # Self-Host & Contribution
