@@ -214,7 +214,7 @@ def generate_drawio_xml(flow_nodes, edges):
     return ET.tostring(mxGraphModel, encoding="unicode")
 
 def generateFromCode(inputCode: str, name: str) -> str:
-    print("Input Code: "+inputCode)
+
     sample_csharp = """
     using System;
     class Program {{
@@ -237,7 +237,7 @@ def generateFromCode(inputCode: str, name: str) -> str:
         }}
     }}
     """
-    flowchart_json = parse_csharp_code(inputCode+"inputcode end")
+    flowchart_json = parse_csharp_code(inputCode)
     if flowchart_json:
         nodes, edges = layout_nodes(flowchart_json, level=0)
         xml_output = generate_drawio_xml(nodes, edges)
@@ -246,4 +246,6 @@ def generateFromCode(inputCode: str, name: str) -> str:
         with open(filename, "w") as f:
             f.write(xml_output)
         print(f"Draw.io XML created: {filename}")
+    else:
+        return FileNotFoundError
     return filename
