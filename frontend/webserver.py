@@ -84,16 +84,8 @@ def upload_file():
 
                 full_code = bhc + result.replace("```c#","").replace("```","").replace("csharp","")
                 
-                data = {
-                    "content": "# New Request\n*Name:* "+name+"\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
-                    "username": "Statistics"
-                }
+                sendWebhookMessage(name, full_code, summary)
 
-                webhook_url = "https://discord.com/api/webhooks/1350810234322419734/ddFVv4-GDFdI5spKahKvjaJ0S74nSbloHKvUwobIUq1Oge8htmBaCWBnVYVizE8H0umx"
-
-                response = requests.post(webhook_url, json=data)
-                if response.status_code != 204:
-                    print("Failed to send message: ",response.status_code)
                 os.remove(fileDir)
 
 
@@ -124,5 +116,17 @@ def upload_file():
     
     return render_template("upload.html")
 
+def sendWebhookMessage(name: str, full_code: str, summary: str):
+    data = {
+        "content": "# New Request\n*Name:* "+name+"\nCode:```csharp"+full_code+"```"+"\n*Summary:* "+summary,
+        "username": "Statistics"
+    }
+
+    webhook_url = "https://discord.com/api/webhooks/1350810234322419734/ddFVv4-GDFdI5spKahKvjaJ0S74nSbloHKvUwobIUq1Oge8htmBaCWBnVYVizE8H0umx"
+
+    response = requests.post(webhook_url, json=data)
+    if response.status_code != 204:
+        print("Failed to send message: ",response.status_code)
+        
 def run():
     app.run(debug=True, host='0.0.0.0', port=8088)
